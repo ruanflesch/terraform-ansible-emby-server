@@ -1,0 +1,20 @@
+---
+version: "2.1"
+services:
+  emby:
+    image: lscr.io/linuxserver/emby:latest
+    container_name: emby
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Brazil
+    volumes:
+      - /var/data/volumes:/config
+      - /var/data/volumes:/data/tvshows
+      - /var/data/volumes:/data/movies
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+
+    restart: unless-stopped
+    
